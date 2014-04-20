@@ -1,0 +1,5 @@
+.sp-setting { text-align: center; font-weight: bold; }
+.sp-block { font-style: italic; }
+.sp-line-speaker { font-weight: bold; }
+.sp-line-paren { font-style: italic; }
+.sp-line-paren, .sp-line-text { margin-left: 1em; }

@@ -80,6 +80,8 @@ class Screenplay {
 				'</div>';
 		}, $blocks );
 
+		$parser->getOutput()->addModuleStyles( 'ext.screenplay' );
+
 		return
 			'<div class="screenplay">' .
 				implode( '', $blocks ) .

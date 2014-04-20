@@ -11,3 +11,9 @@ $wgExtensionCredits['parserhook'][] = array(
 $wgAutoloadClasses['Screenplay'] = __DIR__ . '/Screenplay.class.php';
 $wgMessagesDirs['Screenplay'] = __DIR__ . '/i18n';
 $wgHooks['ParserFirstCallInit'][] = 'Screenplay::init';
+
+$wgResourceModules['ext.screenplay'] = array(
+	'styles' => 'ext.screenplay.css',
+	'localBasePath' => __DIR__ . '/resources',
+	'remoteExtPath' => 'Screenplay/resources',
+);
