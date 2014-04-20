@@ -1,5 +1,24 @@
-.sp-setting { text-align: center; font-weight: bold; }
-.sp-block { font-style: italic; }
-.sp-line-speaker { font-weight: bold; }
-.sp-line-paren { font-style: italic; }
-.sp-line-paren, .sp-line-text { margin-left: 1em; }
+.screenplay {
+	max-width: 50em;
+	box-sizing: border-box;
+	padding: 3em 6em 3em 7em;
+	/* Courier is standard, but doesn't play nice with Windows */
+	font-family: monospace;
+	font-size: 12pt;
+	line-height: 1.2;
+}
+
+.sp-line {
+	margin: 0 6.5em 0 5em;
+}
+.sp-line-speaker {
+	margin: 0 7em 0 6em;
+}
+.sp-line-paren {
+	margin: 0 6em 0 3em;
+}
+
+.sp-line,
+.sp-block {
+	 margin-top: 1.5em;
+}
