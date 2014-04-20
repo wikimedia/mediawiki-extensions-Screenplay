@@ -1,0 +1,6 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"screenplay-desc": "Adds a <code>&lt;screenplay/&gt;</code> tag for screenplay formatting"
+}
