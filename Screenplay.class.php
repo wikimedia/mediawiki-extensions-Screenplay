@@ -46,7 +46,9 @@ class Screenplay {
 			// * 'line-speaker': everything until the first single \n
 			// * 'line-paren': any line wrapped in parentheses that is not a speaker
 			// * 'line-text': any other line within a 'line'
-			if ( preg_match( '/^[\p{Lu}\p{Lt}\p{Lm}\p{Lo}]+?\n/', $block ) ) {
+
+			// Anything but a lowercase letter. http://www.regular-expressions.info/unicode.html
+			if ( preg_match( '/^[^\p{Ll}]+?\n/', $block ) ) {
 				$lines = explode( "\n", $block );
 				$speaker = array_shift( $lines );
 
