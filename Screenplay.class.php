@@ -19,7 +19,7 @@ class Screenplay {
 	 */
 	public static function render( $input, array $args, Parser $parser, PPFrame $frame ) {
 		// Things that would normally be wrapped in <p>s are wrapped in <div>s with classes as follows:
-		// * 'setting': first four letters are 'INT.' or 'EXT.'
+		// * 'setting': a single line in all caps
 		// * 'line': begins all caps (until a single \n) that is not a setting; single linebreaks within these delimit further <div> wrappers as follows:
 		//   * 'line-speaker': everything until the first single \n
 		//   * 'line-paren': any line wrapped in parentheses that is not a speaker
@@ -34,8 +34,9 @@ class Screenplay {
 				return '';
 			}
 
-			// 'setting': first four letters are 'INT.' or 'EXT.'
-			if ( preg_match( '/^(?:INT\.|EXT\.)/', $block ) ) {
+			// 'setting': a single line in all caps
+			// Anything but a lowercase letter. http://www.regular-expressions.info/unicode.html
+			if ( preg_match( '/^[^\p{Ll}]+$/', $block ) ) {
 				return
 					'<div class="sp-setting">' .
 						$parser->recursiveTagParse( $block, $frame ) .
