@@ -46,6 +46,7 @@ class Screenplay {
 				$speaker = array_shift( $lines );
 
 				$lines = array_map( function ( $line ) use ( $parser, $frame ) {
+					$line = trim( $line );
 					if ( preg_match( '/^\(.+\)$/', $line ) ) {
 						return
 							'<div class="sp-paren">' .
