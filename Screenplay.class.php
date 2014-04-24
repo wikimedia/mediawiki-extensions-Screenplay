@@ -18,14 +18,7 @@ class Screenplay {
 	 * @return string
 	 */
 	public static function render( $input, array $args, Parser $parser, PPFrame $frame ) {
-		// Things that would normally be wrapped in <p>s are wrapped in <div>s with classes as follows:
-		// * 'shot-heading': first four letters are 'INT.' or 'EXT.' Is also a slug.
-		// * 'line': begins all caps (until a single \n) that is not a setting; single linebreaks within these delimit further <div> wrappers as follows:
-		//   * 'line-speaker': everything until the first single \n
-		//   * 'line-paren': any line wrapped in parentheses that is not a speaker
-		//   * 'line-text': any other line within a 'line'
-		// * 'slug': anything else
-
+		// Things that would normally be wrapped in <p>s are wrapped in <div>s with various classes.
 		$blocks = explode( "\n\n", trim( $input ) );
 
 		$blocks = array_map( function ( $block ) use ( $parser, $frame ) {
