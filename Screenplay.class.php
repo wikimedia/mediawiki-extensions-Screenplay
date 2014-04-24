@@ -18,11 +18,15 @@ class Screenplay {
 	 * @return string
 	 */
 	public static function render( $input, array $args, Parser $parser, PPFrame $frame ) {
+		// Start by removing all trailing whitespace on each line, as it makes further regex processing
+		// unpleasant. Keep leading whitespace, which might sometimes be intentional. The list of
+		// characters to remove is taken from trim()'s documentation, without '\n'.
+		$input = preg_replace( '/[ \t\r\0\x0B]+$/m', '', $input );
+
 		// Things that would normally be wrapped in <p>s are wrapped in <div>s with various classes.
 		$blocks = explode( "\n\n", trim( $input ) );
 
 		$blocks = array_map( function ( $block ) use ( $parser, $frame ) {
-			$block = trim( $block );
 			if ( $block == '' ) {
 				return '';
 			}
@@ -46,7 +50,6 @@ class Screenplay {
 				$speaker = array_shift( $lines );
 
 				$lines = array_map( function ( $line ) use ( $parser, $frame ) {
-					$line = trim( $line );
 					if ( preg_match( '/^\(.+\)$/', $line ) ) {
 						return
 							'<div class="sp-paren">' .
