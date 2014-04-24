@@ -28,7 +28,7 @@ class Screenplay {
 			}
 
 			// 'shot-heading': a single line where the first four letters are 'INT.' or 'EXT.'
-			if ( preg_match( '/^(?:INT(\.|,| |-)|EXT(\.|,| |-))/', $block ) ) {
+			if ( preg_match( '/^(?:INT[., -]|EXT[., -])/', $block ) ) {
 				return
 					'<div class="sp-slug sp-shot-heading">' .
 						$parser->recursiveTagParse( $block, $frame ) .
