@@ -1,34 +1,56 @@
 /*
  * Styles are apparently based on something copied from something based on the WB formatting style.
  *
- * We'll assume the skin font sizing is sane, and call 10em the general equivlent of 1 printed inch.
+ * We'll assume the skin font sizing is sane, and call 10em the general equivalent of 1 printed inch.
+ *
+ * Metrics as follows (non-nested; blocks in reality will be nested):
+ *   Page width 8.5"
+ *
+ *   Slug lines (stage direction): left margin 1.7", right margin 1.1"
+ *   Dialogue blocks: left margin 2.7", right margin 2.4"
+ *   Speaker lines: left margin 4.1"
+ *   Parentheticals within dialog: left margin 3.4", right margin 3.1"
+ *   Scenes transitions: left margin 6.0" (not implemented here)
+ *
+ *   Shot headings: 2 blank lines preceding
+ *   Other slugs and dialog blocks: 1 blank line preceding
  */
 
 .screenplay {
-	width: 57em;
-	box-sizing: border-box;
-	padding: 3em 6em 3em 7em;
+	/* Content 5.7" after margins
+	 * Decrease effective to 5" due to font/screen oddities */
+	width: 50em;
+	/* Apply slug margins to container, ignore normal top, left, bottom metrics,
+	 * and cut down left margin from 2.7" to .7" due to context of page */
+	margin: 2em 2em 2em 7em;
 	/* Courier is standard, but doesn't play nice with Windows */
 	font-family: monospace, monospace;
 	line-height: 1.3;
 }
 .sp-line {
-	margin: 0 8em 0 10em;
+	/* right margin: 1.3", left margin: 1" */
+	margin: 0 11em 0 10em;
 }
-.sp-line-speaker {
-	margin: 0 8em 0 8em;
+.sp-speaker {
+	/* left margin: 1.4"
+	 * Add right margin to make things fit better */
+	margin: 0 4em 0 10em;
 }
-.sp-line-paren {
-	margin: .2em 8em .2em 5em;
+.sp-paren {
+	/* right margin: .7", left margin: .7" */
+	margin: .2em 7em .2em 7em;
 }
-.sp-line-text {
+.sp-dialogue {
 	margin-top: .2em;
 }
 
 .sp-line,
-.sp-block {
+.sp-slug {
+	/* 1 blank line preceding */
 	 margin-top: 1.75em;
 }
-.sp-setting {
+.sp-shot-heading {
+	/* 2 blank lines preceding */
 	margin-top: 3em;
+	text-transform: uppercase;
 }
