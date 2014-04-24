@@ -23,12 +23,23 @@ class Screenplay {
 		// characters to remove is taken from trim()'s documentation, without '\n'.
 		$input = preg_replace( '/[ \t\r\0\x0B]+$/m', '', $input );
 
+		$newlineMarker = wfRandomString( 16 );
+
+		// When three or more consecutive newlines are encountered, preserve them (converting them to
+		// <br>s) later. Multistep processing, ugh…
+		$input = preg_replace_callback( '/\n(\n+)\n/', function ( $matches ) use ( $newlineMarker ) {
+			$length = strlen( $matches[1] );
+			return "\n\n" . $newlineMarker . $length . "\n\n";
+		}, $input );
+
 		// Things that would normally be wrapped in <p>s are wrapped in <div>s with various classes.
 		$blocks = explode( "\n\n", trim( $input ) );
 
-		$blocks = array_map( function ( $block ) use ( $parser, $frame ) {
-			if ( $block == '' ) {
-				return '';
+		$blocks = array_map( function ( $block ) use ( $parser, $frame, $newlineMarker ) {
+			// Newline preservation hack :(
+			$matches = array();
+			if ( preg_match( '/^' . preg_quote( $newlineMarker ) . '(\d+)$/', $block, $matches ) ) {
+				return str_repeat( '<br />', intval( $matches[1] ) );
 			}
 
 			// 'shot-heading': a single line where the first four letters are 'INT.' or 'EXT.'
