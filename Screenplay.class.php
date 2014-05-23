@@ -33,6 +33,8 @@ class Screenplay {
 		}, $input );
 
 		// Things that would normally be wrapped in <p>s are wrapped in <div>s with various classes.
+		// This unfortunately kills newlines, so we'll put extra newlines after all the <div>s after.
+		// (at least I think it's this)
 		$blocks = explode( "\n\n", trim( $input ) );
 
 		$blocks = array_map( function ( $block ) use ( $parser, $frame, $newlineMarker ) {
@@ -46,6 +48,7 @@ class Screenplay {
 			if ( preg_match( '/^(?:INT[., -]|EXT[., -]).+$/', $block ) ) {
 				return
 					'<div class="sp-slug sp-shot-heading">' .
+						"\n" .
 						$parser->recursiveTagParse( $block, $frame ) .
 					'</div>';
 			}
@@ -64,11 +67,13 @@ class Screenplay {
 					if ( preg_match( '/^\(.+\)$/', $line ) ) {
 						return
 							'<div class="sp-paren">' .
+								"\n" .
 								$parser->recursiveTagParse( $line, $frame ) .
 							'</div>';
 					} else {
 						return
 							'<div class="sp-dialogue">' .
+								"\n" .
 								$parser->recursiveTagParse( $line, $frame ) .
 							'</div>';
 					}
@@ -77,6 +82,7 @@ class Screenplay {
 				return
 					'<div class="sp-line">' .
 						'<div class="sp-speaker">' .
+							"\n" .
 							$parser->recursiveTagParse( $speaker, $frame ) .
 						'</div>' .
 						implode( '', $lines ) .
@@ -86,6 +92,7 @@ class Screenplay {
 			// 'slug': anything else
 			return
 				'<div class="sp-slug">' .
+					"\n" .
 					$parser->recursiveTagParse( $block, $frame ) .
 				'</div>';
 		}, $blocks );
@@ -94,6 +101,7 @@ class Screenplay {
 
 		return
 			'<div class="screenplay">' .
+				"\n" .
 				implode( '', $blocks ) .
 			'</div>';
 	}
