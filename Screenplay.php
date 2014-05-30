@@ -9,6 +9,7 @@ $wgExtensionCredits['parserhook'][] = array(
 );
 
 $wgAutoloadClasses['Screenplay'] = __DIR__ . '/Screenplay.class.php';
+$wgExtensionMessagesFiles['Screenplay'] = __DIR__ . '/Screenplay.i18n.php';
 $wgMessagesDirs['Screenplay'] = __DIR__ . '/i18n';
 $wgHooks['ParserFirstCallInit'][] = 'Screenplay::init';
 
