@@ -1,6 +1,4 @@
 {
-	"@metadata": {
-		"authors": []
-	},
+	"@metadata": [],
 	"screenplay-desc": "Extension description displayed on [[Special:Version]]"
 }
