@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko"
+		]
+	},
+	"screenplay-desc": "Ajoute une balise <code>&lt;screenplay/&gt;</code> pour la mise en forme du scénario"
+}

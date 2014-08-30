@@ -1,4 +1,8 @@
 {
-	"@metadata": [],
-	"screenplay-desc": "Extension description displayed on [[Special:Version]]"
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"screenplay-desc": "{{desc|name=Screenplay|url=http://www.mediawiki.org/wiki/Extension:ScreenPlay}}"
 }
