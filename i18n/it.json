@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"screenplay-desc": "Aggiunge un tag <code>&lt;screenplay/&gt;</code> per la formattazione di una sceneggiatura"
+}
