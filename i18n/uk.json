@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Andriykopanytsia"
+		]
+	},
+	"screenplay-desc": "Додає теґ <code>&lt;screenplay/&gt;</code> для форматування сценаріїв"
+}
