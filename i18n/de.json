@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Metalhead64"
+			"Metalhead64",
+			"Purodha"
 		]
 	},
-	"screenplay-desc": "Ergänzt das <code>&lt;screenplay/&gt;</code>-Tag für die Drehbuch-Formatierung"
+	"screenplay-desc": "Fügt den <code>&lt;screenplay/&gt;</code>-Befehl im Wiki ein, für die Drehbuch-Formatierung"
 }
