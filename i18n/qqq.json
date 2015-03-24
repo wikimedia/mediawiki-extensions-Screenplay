@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"Umherirrender"
 		]
 	},
-	"screenplay-desc": "{{desc|name=Screenplay|url=http://www.mediawiki.org/wiki/Extension:ScreenPlay}}"
+	"screenplay-desc": "{{desc|name=Screenplay|url=https://www.mediawiki.org/wiki/Extension:ScreenPlay}}"
 }
