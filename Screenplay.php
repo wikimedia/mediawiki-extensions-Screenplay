@@ -15,6 +15,7 @@ $wgHooks['ParserFirstCallInit'][] = 'Screenplay::init';
 
 $wgResourceModules['ext.screenplay'] = array(
 	'styles' => 'ext.screenplay.css',
+	'position' => 'top',
 	'localBasePath' => __DIR__ . '/resources',
 	'remoteExtPath' => 'Screenplay/resources',
 );
