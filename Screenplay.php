@@ -4,8 +4,10 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'Screenplay',
 	'author' => array( 'Bartosz Dziewoński', 'Calimonius the Estrange' ),
-	'url' => 'https://github.com/MatmaRex/Screenplay',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Screenplay',
 	'descriptionmsg' => 'screenplay-desc',
+	'license-name' => 'MIT',
+	'version' => .3,
 );
 
 $wgAutoloadClasses['Screenplay'] = __DIR__ . '/Screenplay.class.php';
