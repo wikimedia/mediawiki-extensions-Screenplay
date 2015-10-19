@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Esketti"
+			"Esketti",
+			"Siebrand"
 		]
 	},
-	"screenplay-desc": "Voegt een <code><script/></code> - tag voor de scenario opmaak"
+	"screenplay-desc": "Voegt een label <code>&lt;screenplay/&gt;</code> toe voor het opmaken van scenario's"
 }
