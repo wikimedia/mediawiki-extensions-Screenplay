@@ -1,23 +1,14 @@
 <?php
-
-$wgExtensionCredits['parserhook'][] = array(
-	'path' => __FILE__,
-	'name' => 'Screenplay',
-	'author' => array( 'Bartosz Dziewoński', 'Calimonius the Estrange' ),
-	'url' => 'https://www.mediawiki.org/wiki/Extension:Screenplay',
-	'descriptionmsg' => 'screenplay-desc',
-	'license-name' => 'MIT',
-	'version' => .3,
-);
-
-$wgAutoloadClasses['Screenplay'] = __DIR__ . '/Screenplay.class.php';
-$wgExtensionMessagesFiles['Screenplay'] = __DIR__ . '/Screenplay.i18n.php';
-$wgMessagesDirs['Screenplay'] = __DIR__ . '/i18n';
-$wgHooks['ParserFirstCallInit'][] = 'Screenplay::init';
-
-$wgResourceModules['ext.screenplay'] = array(
-	'styles' => 'ext.screenplay.css',
-	'position' => 'top',
-	'localBasePath' => __DIR__ . '/resources',
-	'remoteExtPath' => 'Screenplay/resources',
-);
+if ( function_exists( 'wfLoadExtension' ) ) {
+	wfLoadExtension( 'Screenplay' );
+	// Keep i18n globals so mergeMessageFileList.php doesn't break
+	$wgMessagesDirs['Screenplay'] = __DIR__ . '/i18n';
+	$wgExtensionMessagesFiles['ScreenplayAlias'] = __DIR__ . '/Screenplay.alias.php';
+	wfWarn(
+		'Deprecated PHP entry point used for Screenplay extension. Please use wfLoadExtension instead, ' .
+		'see https://www.mediawiki.org/wiki/Extension_registration for more details.'
+	);
+	return;
+} else {
+	die( 'This version of the Screenplay extension requires MediaWiki 1.25+' );
+}

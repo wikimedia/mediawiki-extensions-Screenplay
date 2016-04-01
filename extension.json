@@ -1,0 +1,36 @@
+{
+	"name": "Screenplay",
+	"version": 0.4,
+	"author": [
+		"Bartosz Dziewoński",
+		"Calimonius the Estrange"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:Screenplay",
+	"descriptionmsg": "screenplay-desc",
+	"license-name": "MIT",
+	"type": "parserhook",
+	"MessagesDirs": {
+		"Screenplay": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"Screenplay": "Screenplay.class.php"
+	},
+	"ResourceModules": {
+		"ext.screenplay": {
+			"styles": "ext.screenplay.css",
+			"position": "top"
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "Screenplay/resources"
+	},
+	"Hooks": {
+		"ParserFirstCallInit": [
+			"Screenplay::init"
+		]
+	},
+	"manifest_version": 1
+}
