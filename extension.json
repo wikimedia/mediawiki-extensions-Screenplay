@@ -19,7 +19,12 @@
 	},
 	"ResourceModules": {
 		"ext.screenplay": {
-			"styles": "ext.screenplay.css",
+			"styles": {
+				"ext.screenplay.css": { },
+				"ext.screenplay.print.css": {
+					"media": "print"
+				}
+			},
 			"position": "top"
 		}
 	},

@@ -1,0 +1,13 @@
+/*
+ * Some stuff to correct for print.
+ */
+
+.screenplay {
+	margin: 1in 1in 1.5in 1in;
+	font-family: 'Courier', 'Courier New', monospace, monospace;
+	font-size: 1.24ex;
+}
+
+.sp-shot-heading {
+	font-weight: normal;
+}

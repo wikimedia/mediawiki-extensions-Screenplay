@@ -1,57 +1,71 @@
 /*
  * Styles are apparently based on something copied from something based on the WB formatting style.
  *
- * We'll assume the skin font sizing is sane, and call 10em the general equivalent of 1 printed inch.
- *
  * Metrics as follows (non-nested; blocks in reality will be nested):
  *   Page width 8.5"
+ *   Page margins: 1"
+ *   	margin-left: 1.5" for hole punch
  *
- *   Slug lines (stage direction): left margin 1.7", right margin 1.1"
- *   Dialogue blocks: left margin 2.7", right margin 2.4"
- *   Speaker lines: left margin 4.1"
- *   Parentheticals within dialog: left margin 3.4", right margin 3.1"
- *   Scenes transitions: left margin 6.0" (not implemented here)
+ *   Slug lines (actions): indent 0
+ *   Dialogue blocks: indent left 1", indent right 1.5"
+ *   Speaker lines: indent left 2"
+ *   Parentheticals within dialog: indent left 1.5", indent right 2"
+ *   Scenes transitions: indent left 4" (not implemented here)
  *
  *   Shot headings: 2 blank lines preceding
  *   Other slugs and dialog blocks: 1 blank line preceding
  */
 
 .screenplay {
-	/* Content 5.7" after margins
-	 * Decrease effective to 5" due to font/screen oddities */
-	width: 50em;
-	/* Apply slug margins to container, ignore normal top, left, bottom metrics,
-	 * and cut down left margin from 2.7" to .7" due to context of page */
-	margin: 2em 2em 2em 7em;
-	margin-left: 12%;
-	/* Courier is standard, but doesn't play nice with Windows */
+	/* Content 6" after margins; 1" = ~13.75ex */
+	width: 82.5ex;
+	/*
+	 * Lessen page margins because the skin should already include these;
+	 * Ignore extra left margin here because we obviously don't have holes punched on the screen
+	 * margin: 13.75ex; would be correct, but it unnecessary because the skin already has padding
+	 */
+	margin: 2em auto;
+	/*
+	 * Courier is standard, but doesn't play nice with Windows renderers
+	 * Double monospace to avoid some browser bugs which make the font render tiny
+	 */
 	font-family: monospace, monospace;
-	line-height: 1.3;
+	/*
+	 * font-size: 1.12ex; would be correct, but let's not because it's much too small on the screen.
+	 * Font is often too big, though this depends entirely on how the skin set the content font.
+	 */
+	font-size: 95%;
+	line-height: 1.25;
 }
+
+.sp-shot-heading {
+	/* 2 blank lines preceding */
+	margin-top: 4ex;
+	text-transform: uppercase;
+	/* Not part of the spec, but helps readability online */
+	font-weight: bold;
+}
+
 .sp-line {
-	/* right margin: 1.3", left margin: 1" */
-	margin: 0 11em 0 10em;
+	/* right margin: 1.5", left margin: 1" */
+	margin: 0 20.625ex 0 13.75ex;
 }
-.sp-speaker {
-	/* left margin: 1.4"
-	 * Add right margin to make things fit better */
-	margin: 0 4em 0 9.5em;
-}
-.sp-paren {
-	/* right margin: .7", left margin: .7" */
-	margin: .2em 7em .2em 6em;
-}
-.sp-dialogue {
-	margin-top: .2em;
-}
+	.sp-speaker {
+		/* left margin: 2" - 1"
+		* Add right margin to handle stupidly long names: .5" */
+		margin: 0 6.875ex 0 13.75ex;
+	}
+	.sp-paren {
+		/* right margin: 2" - 1.5", left margin: 1.5 - 1" */
+		margin: 0 13.75ex 0 6.875ex;
+	}
+	.sp-dialogue {
+		/* Add some extra spacing because this is bothering me */
+		margin: .3ex 0;
+	}
 
 .sp-line,
 .sp-slug {
 	/* 1 blank line preceding */
-	 margin-top: 1.75em;
-}
-.sp-shot-heading {
-	/* 2 blank lines preceding */
-	margin-top: 3em;
-	text-transform: uppercase;
+	 margin-top: 2ex;
 }
