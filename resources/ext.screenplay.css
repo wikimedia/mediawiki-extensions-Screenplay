@@ -30,11 +30,6 @@
 	 * Double monospace to avoid some browser bugs which make the font render tiny
 	 */
 	font-family: monospace, monospace;
-	/*
-	 * font-size: 1.12ex; would be correct, but let's not because it's much too small on the screen.
-	 * Font is often too big, though this depends entirely on how the skin set the content font.
-	 */
-	font-size: 95%;
 	/* Not part of the spec, but helps readability online */
 	line-height: 1.25;
 }
@@ -60,12 +55,12 @@
 .sp-line,
 .sp-slug {
 	/* 1 blank line preceding */
-	 margin-top: 2ex;
+	 margin-top: 2.5ex;
 }
 
 .sp-shot-heading {
 	/* 2 blank lines preceding */
-	margin-top: 4ex;
+	margin-top: 5ex;
 	text-transform: uppercase;
 	/* Not part of the spec, but helps readability online */
 	font-weight: bold;
