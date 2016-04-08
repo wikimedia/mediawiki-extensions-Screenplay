@@ -1,6 +1,6 @@
 {
 	"name": "Screenplay",
-	"version": 0.4,
+	"version": "0.5",
 	"author": [
 		"Bartosz Dziewoński",
 		"Calimonius the Estrange"
@@ -20,7 +20,9 @@
 	"ResourceModules": {
 		"ext.screenplay": {
 			"styles": {
-				"ext.screenplay.css": { },
+				"ext.screenplay.css": {
+					"media": "screen"
+				},
 				"ext.screenplay.print.css": {
 					"media": "print"
 				}

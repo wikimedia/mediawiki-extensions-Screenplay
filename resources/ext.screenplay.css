@@ -35,15 +35,8 @@
 	 * Font is often too big, though this depends entirely on how the skin set the content font.
 	 */
 	font-size: 95%;
-	line-height: 1.25;
-}
-
-.sp-shot-heading {
-	/* 2 blank lines preceding */
-	margin-top: 4ex;
-	text-transform: uppercase;
 	/* Not part of the spec, but helps readability online */
-	font-weight: bold;
+	line-height: 1.25;
 }
 
 .sp-line {
@@ -68,4 +61,12 @@
 .sp-slug {
 	/* 1 blank line preceding */
 	 margin-top: 2ex;
+}
+
+.sp-shot-heading {
+	/* 2 blank lines preceding */
+	margin-top: 4ex;
+	text-transform: uppercase;
+	/* Not part of the spec, but helps readability online */
+	font-weight: bold;
 }

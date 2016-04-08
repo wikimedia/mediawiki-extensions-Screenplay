@@ -1,13 +1,43 @@
 /*
- * Some stuff to correct for print.
+ * Print rules; effectively the same but different units
  */
 
 .screenplay {
-	margin: 1in 1in 1.5in 1in;
-	font-family: 'Courier', 'Courier New', monospace, monospace;
-	font-size: 1.24ex;
+	/* width: 8.5" - 2.5", height: 11" - 2" */
+	width: 6in;
+	height: 9in;
+	/* margin: 1in 1in 1in 1.5in; except this is nested in mw, which probably has a ~1" margin already*/
+	margin: 0 0 0 .5in;
+	font-family: Courier, monospace;
+	font-size: 12pt;
+}
+
+/* These never really belong in it in practice */
+.screenplay br {
+	display: none;
+}
+
+.sp-line {
+	/* right margin: 1.5", left margin: 1" */
+	margin: 0 1.5in 0 1in;
+}
+	.sp-speaker {
+		/* left margin: 2" - 1" */
+		margin: 0 0 0 1in;
+	}
+	.sp-paren {
+		/* right margin: 2" - 1.5", left margin: 1.5 - 1" */
+		margin: 0 1in 0 .5in;
+	}
+
+.sp-line,
+.sp-slug {
+	/* 1 blank line preceding */
+	 margin-top: 2.35ex;
 }
 
 .sp-shot-heading {
-	font-weight: normal;
+	/* 2 blank lines preceding */
+	margin-top: 4.7ex;
+	text-transform: uppercase;
 }
