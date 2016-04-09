@@ -5,8 +5,7 @@
 .screenplay {
 	/* width: 8.5" - 2.5", height: 11" - 2" */
 	width: 6in;
-	height: 9in;
-	/* margin: 1in 1in 1in 1.5in; except this is nested in mw, which probably has a ~1" margin already*/
+	/* margin: 1in 1in 1in 1.5in; except this is nested in mw, which probably prints with a ~1" margin already */
 	margin: 0 0 0 .5in;
 	font-family: Courier, monospace;
 	font-size: 12pt;
