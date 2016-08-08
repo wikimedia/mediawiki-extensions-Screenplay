@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Revi"
+			"Revi",
+			"Ykhwong"
 		]
 	},
-	"screenplay-desc": "스크린플레이 포맷을 위한 <code>&lt;screenplay/&gt;</code< 태그를 추가"
+	"screenplay-desc": "스크린플레이 포맷을 위한 <code>&lt;screenplay/&gt;</code> 태그를 추가"
 }
