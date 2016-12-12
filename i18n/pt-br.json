@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"!Silent"
+		]
+	},
+	"screenplay-desc": "Adiciona o elemento <code>&lt;screenplay/&gt;</code> para formatação na forma de roteiro"
+}
