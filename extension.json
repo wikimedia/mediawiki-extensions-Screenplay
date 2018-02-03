@@ -26,8 +26,7 @@
 				"ext.screenplay.print.css": {
 					"media": "print"
 				}
-			},
-			"position": "top"
+			}
 		}
 	},
 	"ResourceFileModulePaths": {
