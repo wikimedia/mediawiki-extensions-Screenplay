@@ -48,9 +48,9 @@ class Screenplay {
 
 			// Skip html tags that contain no content
 			$doc = new DOMDocument;
-			MediaWiki\suppressWarnings();
+			Wikimedia\suppressWarnings();
 			$doc->loadHTML( $block );
-			MediaWiki\restoreWarnings();
+			Wikimedia\restoreWarnings();
 			if ( Screenplay::isHtmlTags( $doc->documentElement ) ) {
 				return $block;
 			}
