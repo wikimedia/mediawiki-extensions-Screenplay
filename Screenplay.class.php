@@ -111,10 +111,10 @@ class Screenplay {
 		$parser->getOutput()->addModuleStyles( 'ext.screenplay' );
 
 		return
-			$parser->recursiveTagParse( '<div class="screenplay">' .
+			$parser->recursiveTagParse( '<div class="screenplay-container"><div class="screenplay">' .
 				"\n" .
 				implode( '', $blocks ) .
-			'</div>', $frame );
+			'</div></div>', $frame );
 	}
 
 	/** Helper function for render to check if block contains html text nodes, or is just tags

@@ -1,0 +1,44 @@
+@import 'metrics.less';
+
+// We get to use inches here, per the spec...
+@mult: 1in;
+@line-height: 1.125em;
+
+.screenplay {
+	padding: @page-margins * @mult @page-margins * @mult @page-margins * @mult
+		@page-margin-left * @mult;
+	// except this is nested in mw, so probably should be less...
+	margin: -1 * @mult -0.5 * @mult -0.5 * @mult;
+	width: @page-width * @mult - @page-margins * @mult - @page-margin-left * @mult;
+
+	font-family: Courier, monospace;
+	font-size: 12pt;
+	line-height: @line-height;
+
+	br {
+		// These never really belong in it in practice
+		display: none;
+	}
+}
+
+.sp-line {
+	margin: 0 @dialogue-margin-right * @mult 0 @dialogue-margin-left * @mult;
+}
+
+.sp-speaker {
+	margin: 0 0 0 @speaker-margin-left * @mult;
+}
+
+.sp-paren {
+	margin: 0 @parenthetical-margin * @mult;
+}
+
+.sp-line,
+.sp-slug {
+	 margin-top: @slug-margin * @line-height;
+}
+
+.sp-shot-heading {
+	margin-top: @shot-heading-margin * @line-height;
+	text-transform: uppercase;
+}

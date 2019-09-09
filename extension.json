@@ -23,13 +23,12 @@
 	"ResourceModules": {
 		"ext.screenplay": {
 			"styles": {
-				"ext.screenplay.css": {
-					"media": "screen"
-				},
-				"ext.screenplay.print.css": {
+				"0": "ext.screenplay.less",
+				"ext.screenplay.print.less": {
 					"media": "print"
 				}
-			}
+			},
+			"targets": [ "desktop", "mobile" ]
 		}
 	},
 	"ResourceFileModulePaths": {

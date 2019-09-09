@@ -1,0 +1,91 @@
+@import 'mediawiki.mixins';
+@import 'metrics.less';
+
+// Normal font is 12pt courier, which is ~10 characters per inch, but this is a terrible font
+// for display so we're just going to use whatever and set a multiplier to preserve
+// proportionality.
+@mult: 11ch; // I DON'T KNOW BUT 10 JUST FEELS WRONG
+@line-height: 1.35;
+
+@media screen {
+	.screenplay-container {
+		// Use flex to kill margins smoothly at low resolutions; we'll fall back to
+		// margin: auto below (older browsers + older cached parses without this
+		// container)
+		.flex-display;
+
+		&:before {
+			content: '';
+			.flex(1, 200, @page-margin-left * @mult, 1);
+		}
+
+		&:after {
+			content: '';
+			.flex(5, 200, @page-margins * @mult, 3);
+		}
+	}
+
+	@max-width: @page-width * @mult
+		- @page-margins * @mult
+		- @page-margin-left * @mult;
+	.screenplay {
+		// Sadly we can't just inherit skin pre styles because most pre styles have
+		// weird borders and stuff...
+		font-family: monospace, monospace;
+
+		margin: 0 auto 2em;
+		.flex(0, 1, @max-width, 2);
+
+		// Backwards compatibility for cached pre-flex parser output
+		width: auto;
+		max-width: @max-width;
+
+		// Not part of the spec, but helps display readability
+		line-height: @line-height;
+	}
+
+	@l-left: @dialogue-margin-left * @mult;
+	@l-right: @dialogue-margin-right * @mult;
+	@line-width: @max-width - @l-left - @l-right;
+	.sp-line {
+		margin: 0 @l-right / @max-width * 100% 0 @l-left / @max-width * 100%;
+	}
+
+	@s-left: @speaker-margin-left * @mult;
+	// Not part of the spec, but add right margin to handle stupidly long names: .5"
+	@s-right: 0.5 * @mult;
+	.sp-speaker {
+		margin: 0 @s-right / @line-width * 100% 0 @s-left / @line-width * 100%;
+	}
+
+	@p-side: @parenthetical-margin * @mult;
+	.sp-paren {
+		margin: 0 @p-side / @line-width * 100%;
+	}
+
+	.sp-line,
+	.sp-slug {
+		margin-top: @line-height * @slug-margin * 1em;
+	}
+
+	.sp-shot-heading {
+		margin-top: @line-height * @shot-heading-margin * 1em;
+		text-transform: uppercase;
+
+		// Not part of the spec, but helps display readability
+		font-weight: bold;
+	}
+}
+
+@media screen and ( max-width: 500px ) {
+	.sp-speaker {
+		// Extra highlight when we lose more of the margins
+		font-weight: bold;
+	}
+}
+
+@media screen and ( max-width: 600px ) {
+	.screenplay-container {
+		font-size: 90%;
+	}
+}

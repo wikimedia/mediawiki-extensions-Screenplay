@@ -1,0 +1,33 @@
+/**
+ * Styles are apparently based on something copied from something based on the WB formatting style.
+ * We're really specific here, because I seriously don't remember.
+ *
+ * Metrics as follows (total; non-nested):
+ * 	Page width 8.5"
+ * 	Page margins: 1"
+ *	margin-left: 1.5" for hole punch
+ *
+ *	Slug lines (actions): indent 0
+ *	Dialogue blocks: indent left 1", indent right 1.5"
+ *	Speaker lines: indent left 2"
+ *	Parentheticals within dialog: indent left 1.5", indent right 2"
+ *	Scenes transitions: indent left 4"
+ *
+ *	Shot headings: 2 blank lines preceding
+ *	Other slugs and dialog blocks: 1 blank line preceding
+ */
+
+// Following is all in inches, but we may or may not use inches in practice:
+
+@page-width: 8.5;
+@page-margins: 1;
+@page-margin-left: 1.5;
+
+@dialogue-margin-left: 1;
+@dialogue-margin-right: 1.5;
+@speaker-margin-left: 1; // indent 2 total
+@parenthetical-margin: 0.5; // indent 1.5 total left, 2 total right
+// @scene-transition-left: 4; // not implemented
+
+@shot-heading-margin: 2; // two blank lines preceding
+@slug-margin: 1; // one blank line preceding
