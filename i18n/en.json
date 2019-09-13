@@ -2,5 +2,6 @@
 	"@metadata": {
 		"authors": []
 	},
-	"screenplay-desc": "Adds a <code>&lt;screenplay/&gt;</code> tag for screenplay formatting"
+	"screenplay-desc": "Adds a <code>&lt;screenplay/&gt;</code> tag for screenplay formatting",
+	"screenplay-tracking-category": "Pages using Screenplay"
 }

@@ -12,13 +12,16 @@
 		"MediaWiki": ">= 1.31.0"
 	},
 	"type": "parserhook",
+	"TrackingCategories": [
+		"screenplay-tracking-category"
+	],
 	"MessagesDirs": {
 		"Screenplay": [
 			"i18n"
 		]
 	},
 	"AutoloadClasses": {
-		"Screenplay": "Screenplay.class.php"
+		"ScreenplayParser": "includes/ScreenplayParser.php"
 	},
 	"ResourceModules": {
 		"ext.screenplay": {
@@ -37,7 +40,7 @@
 	},
 	"Hooks": {
 		"ParserFirstCallInit": [
-			"Screenplay::init"
+			"ScreenplayParser::init"
 		]
 	},
 	"manifest_version": 1
