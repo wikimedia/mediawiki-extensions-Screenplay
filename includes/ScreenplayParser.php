@@ -3,11 +3,9 @@
 class ScreenplayParser {
 	/**
 	 * @param Parser $parser
-	 * @return bool true
 	 */
 	public static function init( Parser &$parser ) {
-		$parser->setHook( 'screenplay', array( 'ScreenplayParser', 'render' ) );
-		return true;
+		$parser->setHook( 'screenplay', [ __CLASS__, 'render' ] );
 	}
 
 	/**
@@ -41,7 +39,7 @@ class ScreenplayParser {
 
 		$blocks = array_map( function ( $block ) use ( $parser, $frame, $newlineMarker ) {
 			// Newline preservation hack :(
-			$matches = array();
+			$matches = [];
 			if ( preg_match( '/^' . preg_quote( $newlineMarker ) . '(\d+)$/', $block, $matches ) ) {
 				return str_repeat( '<br />', intval( $matches[1] ) );
 			}
@@ -57,11 +55,11 @@ class ScreenplayParser {
 
 			// 'shot-heading': a single line where the first four letters are 'INT.' or 'EXT.'
 			if ( preg_match( '/^(?:INT[., -]|EXT[., -]).+$/', $block ) ) {
-				return
-					'<div class="sp-slug sp-shot-heading">' .
-						"\n" .
-						$block .
-					'</div>';
+				return Html::rawElement(
+					'div',
+					[ 'class' => [ 'sp-slug', 'sp-shot-heading' ] ],
+					$block
+				);
 			}
 
 			// 'line': begins all caps (until a single \n) that is not a shot-heading;
@@ -78,46 +76,58 @@ class ScreenplayParser {
 
 				$lines = array_map( function ( $line ) use ( $parser, $frame ) {
 					if ( preg_match( '/^\(.+\)$/', $line ) ) {
-						return
-							'<div class="sp-paren">' .
-								"\n" .
-								$line .
-							'</div>';
+						return Html::rawElement(
+							'div',
+							[ 'class' => 'sp-paren' ],
+							$line
+						);
 					} else {
-						return
-							'<div class="sp-dialogue">' .
-								"\n" .
-								$line .
-							'</div>';
+						return Html::rawElement(
+							'div',
+							[ 'class' => 'sp-dialogue' ],
+							$line
+						);
 					}
 				}, $lines );
 
-				return
-					'<div class="sp-line">' .
-						'<div class="sp-speaker">' .
-							"\n" .
-							$speaker .
-						'</div>' .
-						implode( '', $lines ) .
-					'</div>';
+				return Html::rawElement(
+					'div',
+					[ 'class' => [
+						'sp-line',
+						'sp-line-' . Sanitizer::escapeClass( strtolower( $speaker ) )
+					] ],
+					Html::rawElement(
+						'div',
+						[ 'class' => 'sp-speaker' ],
+						$speaker
+					) .
+					implode( "\n", $lines )
+				);
 			}
 
 			// 'slug': anything else
-			return
-				'<div class="sp-slug">' .
-					"\n" .
-					$block .
-				'</div>';
+			return Html::rawElement(
+				'div',
+				[ 'class' => 'sp-slug' ],
+				$block
+			);
 		}, $blocks );
 
 		$parser->getOutput()->addModuleStyles( 'ext.screenplay' );
 		$parser->addTrackingCategory( 'screenplay-tracking-category' );
 
-		return
-			$parser->recursiveTagParse( '<div class="screenplay-container"><div class="screenplay">' .
-				"\n" .
-				implode( '', $blocks ) .
-			'</div></div>', $frame );
+		return $parser->recursiveTagParse(
+			Html::rawElement(
+				'div',
+				[ 'class' => 'screenplay-container' ],
+				Html::rawElement(
+					'div',
+					[ 'class' => 'screenplay' ],
+					implode( "\n", $blocks )
+				)
+			),
+			$frame
+		);
 	}
 
 	/** Helper function for render to check if block contains html text nodes, or is just tags
