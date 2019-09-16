@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"!Silent"
+			"!Silent",
+			"Eduardo Addad de Oliveira"
 		]
 	},
-	"screenplay-desc": "Adiciona o elemento <code>&lt;screenplay/&gt;</code> para formatação na forma de roteiro"
+	"screenplay-desc": "Adiciona o elemento <code>&lt;screenplay/&gt;</code> para formatação na forma de roteiro",
+	"screenplay-tracking-category": "Páginas usando o Roteiro"
 }

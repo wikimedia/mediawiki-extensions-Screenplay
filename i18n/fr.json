@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gomoko"
+			"Gomoko",
+			"Verdy p"
 		]
 	},
-	"screenplay-desc": "Ajoute une balise <code>&lt;screenplay/&gt;</code> pour la mise en forme du scénario"
+	"screenplay-desc": "Ajoute une balise <code>&lt;screenplay/&gt;</code> pour la mise en forme du scénario",
+	"screenplay-tracking-category": "Pages qui utilisent Screenplay"
 }

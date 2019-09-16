@@ -4,5 +4,6 @@
 			"Bjankuloski06"
 		]
 	},
-	"screenplay-desc": "Додава ознака <code>&lt;screenplay/&gt;</code> за форматирање на сценарио"
+	"screenplay-desc": "Додава ознака <code>&lt;screenplay/&gt;</code> за форматирање на сценарио",
+	"screenplay-tracking-category": "Страници што користат „Сценарио“"
 }

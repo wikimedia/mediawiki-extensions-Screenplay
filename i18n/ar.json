@@ -4,5 +4,6 @@
 			"ديفيد"
 		]
 	},
-	"screenplay-desc": "يضيف وسم <code>&lt;screenplay/&gt;</code> لتنسيق السكريبت"
+	"screenplay-desc": "يضيف وسم <code>&lt;screenplay/&gt;</code> لتنسيق السكريبت",
+	"screenplay-tracking-category": "صفحات تستخدم سيناريو"
 }
