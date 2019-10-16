@@ -4,5 +4,6 @@
 			"Hamilton Abreu"
 		]
 	},
-	"screenplay-desc": "Adiciona o elemento <code>&lt;screenplay/&gt;</code> para formatação na forma de guião"
+	"screenplay-desc": "Adiciona o elemento <code>&lt;screenplay/&gt;</code> para formatação na forma de guião",
+	"screenplay-tracking-category": "Páginas que usam Screenplay"
 }
