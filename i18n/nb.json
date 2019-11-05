@@ -4,5 +4,6 @@
 			"Jon Harald Søby"
 		]
 	},
-	"screenplay-desc": "Legger til en <code>&lt;screenplay/&gt;</code>-tagg for filmmanuskriptformatering"
+	"screenplay-desc": "Legger til en <code>&lt;screenplay/&gt;</code>-tagg for filmmanuskriptformatering",
+	"screenplay-tracking-category": "Sider som bruker Screenplay"
 }
