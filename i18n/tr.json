@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"BaRaN6161 TURK"
+		]
+	},
+	"screenplay-desc": "Ekran oynatma biçimlendirmesi için <code>&lt;screenplay/&gt;</code> etiketi ekler",
+	"screenplay-tracking-category": "Ekran Oynatma kullanan sayfalar"
+}
