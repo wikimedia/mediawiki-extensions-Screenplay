@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Okras",
-			"Katunchik"
+			"Katunchik",
+			"Okras"
 		]
 	},
 	"screenplay-desc": "Добавляет тег <code>&lt;screenplay/&gt;</code> для форматирования сценариев",
