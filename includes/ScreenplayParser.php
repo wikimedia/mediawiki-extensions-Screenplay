@@ -2,7 +2,7 @@
 
 class ScreenplayParser {
 	/**
-	 * @param Parser $parser
+	 * @param Parser &$parser
 	 */
 	public static function init( Parser &$parser ) {
 		$parser->setHook( 'screenplay', [ __CLASS__, 'render' ] );
@@ -130,15 +130,16 @@ class ScreenplayParser {
 		);
 	}
 
-	/** Helper function for render to check if block contains html text nodes, or is just tags
-	 * @param mixed element to check
+	/**
+	 * Helper function for render to check if block contains html text nodes, or is just tags
+	 * @param mixed $element Element to check
 	 * @return bool
 	 */
 	private static function isHtmlTags( $element ) {
 		if ( !is_object( $element ) || $element->nodeType == XML_TEXT_NODE ) {
 			return false;
 		}
-		for( $i = 0; $i < $element->childNodes->length; $i++ ) {
+		for ( $i = 0; $i < $element->childNodes->length; $i++ ) {
 			if ( !self::isHtmlTags( $element->childNodes->item( $i ) ) ) {
 				return false;
 			}
