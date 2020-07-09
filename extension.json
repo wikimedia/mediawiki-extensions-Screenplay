@@ -20,6 +20,9 @@
 			"i18n"
 		]
 	},
+	"config": {
+		"ScreenplayTokens": false
+	},
 	"AutoloadClasses": {
 		"ScreenplayParser": "includes/ScreenplayParser.php"
 	},

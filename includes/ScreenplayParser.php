@@ -1,14 +1,109 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
+
 class ScreenplayParser {
 	/**
 	 * @param Parser &$parser
 	 */
 	public static function init( Parser &$parser ) {
 		$parser->setHook( 'screenplay', [ __CLASS__, 'render' ] );
+
+		$config = RequestContext::getMain()->getConfig();
+		if ( $config->get( 'ScreenplayTokens' ) ) {
+			$parser->setHook( 'screenplaytokens', [ __CLASS__, 'setupTokens' ] );
+		}
 	}
 
 	/**
+	 * Render special CSS to add speaker tokens to screenplay output
+	 *
+	 * @param string $input
+	 * @param array $args (use provided id argument so multiple can be added to a page, set size)
+	 * @param Parser $parser
+	 * @param PPFrame $frame
+	 * @return string
+	 */
+	public static function setupTokens( $input, array $args, Parser $parser, PPFrame $frame ) {
+		$input = self::trimLines( $input );
+
+		// Everything should be split up into blocks of two lines each...
+		$blocks = explode( "\n\n", trim( $input ) );
+		$speakers = [];
+		foreach ( $blocks as $block ) {
+			$speaker = explode( "\n", trim( $block ) );
+
+			if ( count( $speaker ) == 2 ) {
+				$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile(
+					trim( $speaker[1] ) );
+				if ( !$file ) {
+					// Oooo, free garbage input! Just ignore.
+					continue;
+				}
+
+				$speakers[trim( $speaker[0] )] = $file;
+			}
+			// Anything else is probably garbage ...
+		}
+		if ( count( $speakers ) ) {
+			// Arguments?
+			$id = 'screenplay-tokens';
+			if ( isset( $args['id'] ) ) {
+				// how well do we really need to escape this?
+				$id .= '-' . htmlspecialchars( Sanitizer::escapeIdForAttribute( $args['id'] ) );
+			}
+
+			$width = 20;
+			if ( isset( $args['size'] ) ) {
+				$size = trim( $args['size'] );
+				if ( is_numeric( $size ) ) {
+					$width = $size;
+				} else {
+					$size = rtrim( $size, 'px' );
+					if ( is_numeric( $size ) ) {
+						$width = $size;
+					}
+				}
+			}
+
+			// Logic
+			$config = RequestContext::getMain()->getConfig();
+			$offset = $width / 2;
+			// TODO: perhaps move some of this to the module (if enabled)?
+			$css = ".sp-speaker {\n\tfont-weight: bold;\n}\n\n.sp-speaker::before {\n\t" .
+				"content: '';\n\twidth: {$width}px;\n\theight: {$width}px;\n\t" .
+				"display: inline-block;\n\tbackground-repeat: no-repeat;\n\t" .
+				"background-position: center center;\n\t" .
+				"margin: 0 0.25em -0.25em -{$offset}px;\n}\n";
+
+			foreach ( $speakers as $speaker => $file ) {
+				$class = 'sp-line-' . Sanitizer::escapeClass( strtolower( $speaker ) );
+				// Triple for HiDPI...
+				$thumb = $file->createThumb( $width * 3 );
+				$height = File::scaleHeight( $file->getWidth(), $file->getHeight(), $width );
+				// Specific stuff
+				$background = CSSMin::buildUrlValue( OutputPage::transformResourcePath( $config, $thumb ) );
+				$token = "\tbackground-image: $background;\n";
+				$token .= "\tbackground-size: {$width}px {$height}px;\n";
+
+				if ( $class == 'sp-line-default' ) {
+					// Set a default token for unspecified speakers
+					$css .= "\n.sp-speaker::before {\n$token}\n";
+				} else {
+					$css .= "\n.$class .sp-speaker::before {\n$token}\n";
+				}
+			}
+			$output = $parser->getOutput();
+			$output->addHeadItem( "<style>$css</style>", $id );
+		}
+
+		// we're not actually printing anything.
+		return '';
+	}
+
+	/**
+	 * Actual parsing: render the screenplay format itself
+	 *
 	 * @param string $input
 	 * @param array $args
 	 * @param Parser $parser
@@ -17,10 +112,8 @@ class ScreenplayParser {
 	 */
 	public static function render( $input, array $args, Parser $parser, PPFrame $frame ) {
 		// Start by removing all trailing whitespace on each line, as it makes further regex
-		// processing unpleasant. Keep leading whitespace, which might sometimes be
-		// intentional. The list of characters to remove is taken from trim()'s documentation,
-		// without '\n'.
-		$input = preg_replace( '/[ \t\r\0\x0B]+$/m', '', $input );
+		// processing unpleasant.
+		$input = self::trimLines( $input );
 
 		$newlineMarker = wfRandomString( 16 );
 
@@ -131,7 +224,21 @@ class ScreenplayParser {
 	}
 
 	/**
-	 * Helper function for render to check if block contains html text nodes, or is just tags
+	 * Helper function for render to trim trailing whitespace
+	 * Keep leading whitespace, which might sometimes be intentional. The list of
+	 * characters to remove is taken from trim()'s documentation, without '\n'.
+	 *
+	 * @param string $input
+	 * @return string
+	 */
+	private static function trimLines( $input ) {
+		return preg_replace( '/[ \t\r\0\x0B]+$/m', '', $input );
+	}
+
+	/**
+	 * Helper function for render to check if block contains html text nodes, or is
+	 * just tags
+	 *
 	 * @param mixed $element Element to check
 	 * @return bool
 	 */
