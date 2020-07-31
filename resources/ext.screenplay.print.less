@@ -5,10 +5,13 @@
 @line-height: 1.125em;
 
 .screenplay {
+	// Should be 1, 1, 1, 1.5
 	padding: @page-margins * @mult @page-margins * @mult @page-margins * @mult
 		@page-margin-left * @mult;
-	// except this is nested in mw, so probably should be less...
-	margin: -1 * @mult -0.5 * @mult -0.5 * @mult;
+	// Except this is nested in mw and existing print margins, so probably should be
+	// less to ensure it fits... (people can adjust further as needed on print settings
+	// if they care)
+	margin: -1 * @mult -0.5 * @mult -0.5 * @mult -1 * @mult;
 	width: @page-width * @mult - @page-margins * @mult - @page-margin-left * @mult;
 
 	font-family: Courier, monospace;
