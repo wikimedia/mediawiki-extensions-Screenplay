@@ -26,6 +26,7 @@ class ScreenplayParser {
 	 */
 	public static function setupTokens( $input, array $args, Parser $parser, PPFrame $frame ) {
 		$input = self::trimLines( $input );
+		$output = $parser->getOutput();
 
 		// Everything should be split up into blocks of two lines each...
 		$blocks = explode( "\n\n", trim( $input ) );
@@ -40,6 +41,15 @@ class ScreenplayParser {
 					// Oooo, free garbage input! Just ignore.
 					continue;
 				}
+
+				// Track used images so that they show up as used under "File usage" on their
+				// respective File: pages so that admins don't accidentally end up deleting
+				// "unused" images which are, in fact, used
+				$output->addImage(
+					$file->getTitle()->getDBkey(),
+					$file->getTimestamp(),
+					$file->getSha1()
+				);
 
 				$speakers[trim( $speaker[0] )] = $file;
 			}
@@ -93,7 +103,7 @@ class ScreenplayParser {
 					$css .= "\n.$class .sp-speaker::before {\n$token}\n";
 				}
 			}
-			$output = $parser->getOutput();
+
 			$output->addHeadItem( "<style>$css</style>", $id );
 		}
 
