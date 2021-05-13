@@ -129,7 +129,7 @@ class ScreenplayParser {
 
 		// When three or more consecutive newlines are encountered, preserve them (converting
 		// them to <br>s) later. Multistep processing, ugh…
-		$input = preg_replace_callback( '/\n(\n+)\n/', function ( $matches ) use ( $newlineMarker ) {
+		$input = preg_replace_callback( '/\n(\n+)\n/', static function ( $matches ) use ( $newlineMarker ) {
 			$length = strlen( $matches[1] );
 			return "\n\n" . $newlineMarker . $length . "\n\n";
 		}, $input );
@@ -177,7 +177,7 @@ class ScreenplayParser {
 				$lines = explode( "\n", $block );
 				$speaker = array_shift( $lines );
 
-				$lines = array_map( function ( $line ) use ( $parser, $frame ) {
+				$lines = array_map( static function ( $line ) use ( $parser, $frame ) {
 					if ( preg_match( '/^\(.+\)$/', $line ) ) {
 						return Html::rawElement(
 							'div',
