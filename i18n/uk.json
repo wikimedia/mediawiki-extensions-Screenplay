@@ -2,9 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Andriykopanytsia",
+			"DDPAT",
 			"Movses"
 		]
 	},
-	"screenplay-desc": "Додає теґ <code>&lt;screenplay/&gt;</code> для форматування сценаріїв",
+	"screenplay-desc": "Додає тег <code>&lt;screenplay/&gt;</code> для форматування сценаріїв",
 	"screenplay-tracking-category": "Сторінки, що використовують Screenplay"
 }
