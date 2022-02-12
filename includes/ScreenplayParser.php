@@ -216,7 +216,7 @@ class ScreenplayParser {
 			);
 		}, $blocks );
 
-		$parser->getOutput()->addModuleStyles( 'ext.screenplay' );
+		$parser->getOutput()->addModuleStyles( [ 'ext.screenplay' ] );
 		$parser->addTrackingCategory( 'screenplay-tracking-category' );
 
 		return $parser->recursiveTagParse(
