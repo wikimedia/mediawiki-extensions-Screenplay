@@ -1,4 +1,5 @@
 {
+	"name": "Screenplay",
 	"private": true,
 	"scripts": {
 		"test": "grunt test"
