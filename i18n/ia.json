@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"screenplay-desc": "Adde un etiquetta <code>&lt;screenplay/&gt;</code> pro formatar scenarios de film",
+	"screenplay-tracking-category": "Paginas que usa Screenplay"
+}
