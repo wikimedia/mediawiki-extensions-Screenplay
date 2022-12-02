@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Guycn2"
 		]
 	},
-	"screenplay-desc": "הוספת תג <code>&lt;screenplay/&gt;</code> עבור עיצוב תסריט"
+	"screenplay-desc": "הוספת תג <code>&lt;screenplay/&gt;</code> עבור עיצוב תסריט",
+	"screenplay-tracking-category": "דפים שמשתמשים ב־Screenplay"
 }
