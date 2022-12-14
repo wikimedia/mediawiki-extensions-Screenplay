@@ -2,6 +2,7 @@
 
 use MediaWiki\MediaWikiServices;
 use Wikimedia\AtEase\AtEase;
+use Wikimedia\Minify\CSSMin;
 
 class ScreenplayParser {
 	/**
