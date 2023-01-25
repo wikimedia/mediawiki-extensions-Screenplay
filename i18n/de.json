@@ -2,8 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Metalhead64",
-			"Purodha"
+			"Purodha",
+			"Justman10000"
 		]
 	},
-	"screenplay-desc": "Fügt den <code>&lt;screenplay/&gt;</code>-Befehl im Wiki ein, für die Drehbuch-Formatierung"
+	"screenplay-desc": "Fügt den <code>&lt;screenplay/&gt;</code>-Befehl im Wiki ein, für die Drehbuch-Formatierung",
+	"screenplay-tracking-category": "Seiten, die das Drehbuch verwenden"
 }
