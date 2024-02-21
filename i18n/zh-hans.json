@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Anterdc99"
 		]
 	},
-	"screenplay-desc": "加入<code>&lt;screenplay/&gt;</code>标签用于剧本格式化"
+	"screenplay-desc": "加入<code>&lt;screenplay/&gt;</code>标签用于剧本格式化",
+	"screenplay-tracking-category": "使用Screenplay的页面"
 }
