@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Lokal Profil"
+			"Lokal Profil",
+			"Stefan2255"
 		]
 	},
-	"screenplay-desc": "Lägger till en <code>&lt;screenplay/&gt;</code>-tagg för formatering av manus"
+	"screenplay-desc": "Lägger till en <code>&lt;screenplay/&gt;</code>-tagg för formatering av manus",
+	"screenplay-tracking-category": "Sidor som använder Screenplay"
 }
