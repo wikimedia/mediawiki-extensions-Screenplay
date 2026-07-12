@@ -16,12 +16,12 @@
 
 		&:before {
 			content: '';
-			.flex(1, 200, @page-margin-left * @mult, 1);
+			.flex(1, 200, (@page-margin-left * @mult), 1);
 		}
 
 		&:after {
 			content: '';
-			.flex(5, 200, @page-margins * @mult, 3);
+			.flex(5, 200, (@page-margins * @mult), 3);
 		}
 	}
 
@@ -49,28 +49,28 @@
 	@l-right: @dialogue-margin-right * @mult;
 	@line-width: @max-width - @l-left - @l-right;
 	.sp-line {
-		margin: 0 @l-right / @max-width * 100% 0 @l-left / @max-width * 100%;
+		margin: 0 (@l-right / @max-width * 100%) 0 (@l-left / @max-width * 100%);
 	}
 
 	@s-left: @speaker-margin-left * @mult;
 	// Not part of the spec, but add right margin to handle stupidly long names: .5"
 	@s-right: 0.5 * @mult;
 	.sp-speaker {
-		margin: 0 @s-right / @line-width * 100% 0 @s-left / @line-width * 100%;
+		margin: 0 (@s-right / @line-width * 100%) 0 (@s-left / @line-width * 100%);
 	}
 
 	@p-side: @parenthetical-margin * @mult;
 	.sp-paren {
-		margin: 0 @p-side / @line-width * 100%;
+		margin: 0 (@p-side / @line-width * 100%);
 	}
 
 	.sp-line,
 	.sp-slug {
-		margin-top: @line-height * @slug-margin * 1em;
+		margin-top: (@line-height * @slug-margin * 1em);
 	}
 
 	.sp-shot-heading {
-		margin-top: @line-height * @shot-heading-margin * 1em;
+		margin-top: (@line-height * @shot-heading-margin * 1em);
 		text-transform: uppercase;
 
 		// Not part of the spec, but helps display readability

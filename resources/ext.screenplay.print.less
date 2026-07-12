@@ -6,13 +6,13 @@
 
 .screenplay {
 	// Should be 1, 1, 1, 1.5
-	padding: @page-margins * @mult @page-margins * @mult @page-margins * @mult
-		@page-margin-left * @mult;
+	padding: (@page-margins * @mult) (@page-margins * @mult) (@page-margins * @mult)
+		(@page-margin-left * @mult);
 	// Except this is nested in mw and existing print margins, so probably should be
 	// less to ensure it fits... (people can adjust further as needed on print settings
 	// if they care)
-	margin: -1 * @mult -0.5 * @mult -0.5 * @mult -1 * @mult;
-	width: @page-width * @mult - @page-margins * @mult - @page-margin-left * @mult;
+	margin: (-1 * @mult) (-0.5 * @mult) (-0.5 * @mult) (-1 * @mult);
+	width: (@page-width * @mult - @page-margins * @mult - @page-margin-left * @mult);
 
 	font-family: Courier, monospace;
 	font-size: 12pt;
@@ -25,23 +25,23 @@
 }
 
 .sp-line {
-	margin: 0 @dialogue-margin-right * @mult 0 @dialogue-margin-left * @mult;
+	margin: 0 (@dialogue-margin-right * @mult) 0 (@dialogue-margin-left * @mult);
 }
 
 .sp-speaker {
-	margin: 0 0 0 @speaker-margin-left * @mult;
+	margin: 0 0 0 (@speaker-margin-left * @mult);
 }
 
 .sp-paren {
-	margin: 0 @parenthetical-margin * @mult;
+	margin: 0 (@parenthetical-margin * @mult);
 }
 
 .sp-line,
 .sp-slug {
-	 margin-top: @slug-margin * @line-height;
+	 margin-top: (@slug-margin * @line-height);
 }
 
 .sp-shot-heading {
-	margin-top: @shot-heading-margin * @line-height;
+	margin-top: (@shot-heading-margin * @line-height);
 	text-transform: uppercase;
 }
