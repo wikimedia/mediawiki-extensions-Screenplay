@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wizzard"
+		]
+	},
+	"screenplay-desc": "Pridáva značku <code>&lt;screenplay/&gt;</code> na formátovanie filmových scenárov",
+	"screenplay-tracking-category": "Stránky používajúce Screenplay"
+}
